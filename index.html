@@ -27,7 +27,7 @@
             background-color: rgba(0, 0, 0, 0);
             padding: 15px 20px;
             display: flex;
-            justify-content: space-between; /* Mantiene el logo a la izquierda y el nav a la derecha */
+            justify-content: space-between;
             align-items: center;
             z-index: 100;
             transition: background-color 0.5s ease;
@@ -49,9 +49,9 @@
         }
 
         #header nav {
-            flex: 1; /* Permite que el nav ocupe el espacio restante */
+            flex: 1;
             display: flex;
-            justify-content: center; /* Centra el contenido del nav (la lista ul) */
+            justify-content: center;
         }
 
         #header nav ul {
@@ -59,11 +59,11 @@
             display: flex;
             margin: 0;
             padding: 0;
-            justify-content: center; /* Centra los items de la lista */
+            justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            margin-left: -50px; /* Ajuste negativo para centrar más el menú */
+            margin-left: -50px;
         }
 
         #header.scrolled nav ul {
@@ -113,7 +113,7 @@
 
         #content {
             flex: 1;
-            padding-top: 0;
+            padding-top: 80px; /* Asegurar que el contenido no se solape con el header fijo */
             padding-left: 20px;
             padding-right: 20px;
             box-sizing: border-box;
@@ -259,6 +259,7 @@
     </header>
     <main id="content">
         <section id="main-image-container">
+            <img id="main-image" src="" alt="Imagen de Remodelación">
         </section>
         <section class="section">
             <h1>Bienvenido a ENR Remodelación y Diseño</h1>
