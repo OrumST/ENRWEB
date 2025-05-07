@@ -22,23 +22,117 @@
             padding: 20px;
         }
 
-        header {
-            background-color: #1a1a1a;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid #222;
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background-color 0.5s ease;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        #header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #header .logo-header {
+            width: 120px;
+            transition: width 0.5s ease;
+            opacity: 0;
+        }
+
+        #header.scrolled .logo-header {
+            width: 80px;
+            opacity: 1;
+        }
+
+        #header nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        #header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            margin-left: -50px;
+        }
+
+        #header.scrolled nav ul {
+            opacity: 1;
+        }
+
+        #header nav ul li {
+            margin-left: 25px;
+        }
+
+        #header nav ul li a {
             color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        #header nav ul li a:hover {
+            color: #aaa;
+        }
+
+        #logo-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            z-index: 10;
+            transition: all 0.7s ease;
+        }
+
+        #logo-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.5);
+        }
+
+        #logo {
+            width: 500px;
+            transition: width 0.7s ease;
         }
 
         main {
-            padding: 30px 0;
-            display: flex;
-            flex-direction: column;
+            padding-top: 80px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.7s ease;
+            transform: translateY(0);
+        }
+
+        main.show {
+            transform: translateY(0);
+        }
+
+        main h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #fff;
         }
 
         .image-carousel {
@@ -52,6 +146,7 @@
         .image-carousel-wrapper {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            align-items: center;
         }
 
         .image-carousel-wrapper img {
@@ -114,18 +209,37 @@
             border-radius: 8px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
             margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .details-section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
+            margin-bottom: 25px;
             color: #00bfff;
+            transition: color 0.3s ease;
+        }
+
+        .details-section h2:hover {
+            color: #00ced1;
         }
 
         .details-section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 25px;
             color: #ddd;
+            line-height: 1.8;
+            animation: slideIn 1s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
         }
 
         .features-section {
@@ -133,40 +247,57 @@
             padding: 30px;
             border-radius: 8px;
             margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.8s;
         }
 
         .features-section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: 2.2em;
+            margin-bottom: 25px;
             color: #00bfff;
+            transition: color 0.3s ease;
+        }
+
+        .features-section h2:hover {
+            color: #00ced1;
         }
 
         .features-section ul {
             list-style: disc;
-            padding-left: 20px;
-            font-size: 1.1em;
+            padding-left: 25px;
+            font-size: 1.2em;
             color: #ddd;
+            animation: slideIn 1s ease 0.3s;
         }
 
         .features-section li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .link-Volver {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #00bfff;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
         }
 
         .link-Volver:hover {
             background-color: #008080;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
         }
 
         footer {
@@ -227,12 +358,12 @@
 
             .details-section h2,
             .features-section h2 {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
 
             .details-section p,
             .features-section ul {
-                font-size: 1em;
+                font-size: 1.1em;
             }
 
             .image-carousel-wrapper img {
@@ -250,8 +381,17 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Cocina Moderna con Diseño Minimalista</h1>
+    <header id="header">
+        <img src="https://i.postimg.cc/y8ZGg3X4/LOGO-ENR-SIN-FONDO.png" alt="Logo de ENR Remodelación y Diseño" class="logo-header">
+        <nav>
+            <ul>
+                <li><a href="#">INICIO</a></li>
+                <li><a href="#">PORTAFOLIO</a></li>
+                <li><a href="#">NOSOTROS</a></li>
+                <li><a href="#">SERVICIOS</a></li>
+                <li><a href="#">CONTACTO</a></li>
+            </ul>
+        </nav>
     </header>
     <main class="container">
         <section class="image-carousel">
@@ -266,21 +406,21 @@
         <section class="details-section">
             <h2>Descripción</h2>
             <p>
-                Esta cocina moderna presenta un diseño minimalista, con líneas limpias y una paleta de colores neutros. El mobiliario a medida se integra perfectamente en el espacio, ofreciendo soluciones de almacenamiento inteligentes y funcionales. Los acabados en mármol aportan un toque de elegancia y sofisticación, creando un ambiente luminoso y acogedor.
+                Esta cocina moderna es una obra maestra de diseño minimalista, caracterizada por líneas puras y una paleta de colores neutros que irradian serenidad y sofisticación. El mobiliario, diseñado a medida, se integra a la perfección en el espacio, ofreciendo soluciones de almacenamiento ingeniosas y funcionales que optimizan la organización y la eficiencia. Los exquisitos acabados en mármol realzan la elegancia del ambiente, infundiendo luminosidad y una sensación de amplitud que invita a la contemplación y el disfrute.
             </p>
             <p>
-                La combinación de materiales de alta calidad y la atención al detalle en el diseño hacen de esta cocina un espacio único y especial. Es el lugar perfecto para disfrutar de la cocina y compartir momentos inolvidables con familiares y amigos.
+                La meticulosa selección de materiales de primera calidad y la atención al detalle en cada aspecto del diseño convergen para crear un espacio culinario que trasciende lo ordinario. Esta cocina no es solo un lugar para preparar alimentos, sino un santuario donde convergen la estética y la funcionalidad, un espacio inspirador para deleitar los sentidos y compartir momentos inolvidables con los seres queridos.
             </p>
         </section>
         <section class="features-section">
             <h2>Características principales</h2>
             <ul>
-                <li>Diseño minimalista y elegante</li>
-                <li>Mobiliario a medida con soluciones de almacenamiento inteligentes</li>
-                <li>Acabados en mármol de alta calidad</li>
-                <li>Iluminación LED integrada</li>
-                <li>Electrodomésticos de última generación</li>
-                <li>Espacio amplio y funcional</li>
+                <li>Diseño minimalista de líneas puras y estética elegante</li>
+                <li>Mobiliario a medida con soluciones de almacenamiento optimizadas</li>
+                <li>Exquisitos acabados en mármol que aportan luminosidad y sofisticación</li>
+                <li>Iluminación LED integrada que realza la belleza del diseño</li>
+                <li>Electrodomésticos de última generación para una experiencia culinaria superior</li>
+                <li>Espacio amplio y funcional diseñado para la comodidad y la eficiencia</li>
             </ul>
         </section>
         <a href="index.html" class="link-Volver">Volver a Proyectos</a>
@@ -326,7 +466,19 @@
             updateCarousel();
         }
 
+        window.addEventListener('scroll', function() {
+            let scrollPosition = window.scrollY;
+            let header = document.getElementById('header');
+            let headerLogo = document.querySelector('#header .logo-header');
 
+            if (scrollPosition > 200) {
+                header.classList.add('scrolled');
+                headerLogo.style.opacity = 1;
+            } else {
+                header.classList.remove('scrolled');
+                headerLogo.style.opacity = 0;
+            }
+        });
     </script>
 </body>
 </html>
