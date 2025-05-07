@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocina Moderna con Diseño Minimalista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #111;
+            color: #eee;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        main {
+            padding: 30px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-carousel {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .image-carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .image-carousel-wrapper img {
+            width: 50%;
+            min-width: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin-right: 0;
+            transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .image-carousel-wrapper img:not(:nth-child(1)) {
+            opacity: 0.5;
+            filter: blur(5px);
+            transform: scale(0.8);
+        }
+
+        .image-carousel-wrapper img:nth-child(1) {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+
+        .image-carousel-wrapper img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-arrow.prev {
+            left: 10px;
+        }
+
+        .carousel-arrow.next {
+            right: 10px;
+        }
+
+        .details-section {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
+
+        .details-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #00bfff;
+        }
+
+        .details-section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .features-section {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .features-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #00bfff;
+        }
+
+        .features-section ul {
+            list-style: disc;
+            padding-left: 20px;
+            font-size: 1.1em;
+            color: #ddd;
+        }
+
+        .features-section li {
+            margin-bottom: 10px;
+        }
+
+        .link-Volver {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00bfff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .link-Volver:hover {
+            background-color: #008080;
+        }
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #222;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .details-section h2,
+            .features-section h2 {
+                font-size: 1.5em;
+            }
+
+            .details-section p,
+            .features-section ul {
+                font-size: 1em;
+            }
+
+            .image-carousel-wrapper img {
+                width: 90%;
+                min-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-carousel-wrapper img {
+                width: 100%;
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cocina Moderna con Diseño Minimalista</h1>
+    </header>
+    <main class="container">
+        <section class="image-carousel">
+            <div class="image-carousel-wrapper">
+                <img src="https://raw.githubusercontent.com/OrumST/ENRWEB/refs/heads/images/cocina-enr.jpeg" alt="Cocina moderna con diseño minimalista">
+                <img src="https://github.com/OrumST/ENRWEB/blob/images/concina-enr-lado.jpeg?raw=true" alt="Cocina moderna vista lateral">
+                <img src="https://github.com/OrumST/ENRWEB/blob/images/cocina-enr-back.jpeg?raw=true" alt="Cocina moderna vista trasera">
+            </div>
+            <button class="carousel-arrow prev" onclick="prevImage()">❮</button>
+            <button class="carousel-arrow next" onclick="nextImage()">❯</button>
+        </section>
+        <section class="details-section">
+            <h2>Descripción</h2>
+            <p>
+                Esta cocina moderna presenta un diseño minimalista, con líneas limpias y una paleta de colores neutros. El mobiliario a medida se integra perfectamente en el espacio, ofreciendo soluciones de almacenamiento inteligentes y funcionales. Los acabados en mármol aportan un toque de elegancia y sofisticación, creando un ambiente luminoso y acogedor.
+            </p>
+            <p>
+                La combinación de materiales de alta calidad y la atención al detalle en el diseño hacen de esta cocina un espacio único y especial. Es el lugar perfecto para disfrutar de la cocina y compartir momentos inolvidables con familiares y amigos.
+            </p>
+        </section>
+        <section class="features-section">
+            <h2>Características principales</h2>
+            <ul>
+                <li>Diseño minimalista y elegante</li>
+                <li>Mobiliario a medida con soluciones de almacenamiento inteligentes</li>
+                <li>Acabados en mármol de alta calidad</li>
+                <li>Iluminación LED integrada</li>
+                <li>Electrodomésticos de última generación</li>
+                <li>Espacio amplio y funcional</li>
+            </ul>
+        </section>
+        <a href="index.html" class="link-Volver">Volver a Proyectos</a>
+    </main>
+    <footer id="footer">
+        <p>© 2025 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
+    </footer>
+
+    <div id="modal-imagen" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="img-ampliada">
+    </div>
+
+    <script>
+        const carouselWrapper = document.querySelector('.image-carousel-wrapper');
+        const carouselImages = document.querySelectorAll('.image-carousel-wrapper img');
+        const prevButton = document.querySelector('.carousel-arrow.prev');
+        const nextButton = document.querySelector('.carousel-arrow.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            carouselWrapper.style.transform = `translateX(-${currentIndex * 50}%)`;
+            carouselImages.forEach((img, i) => {
+                if (i === currentIndex) {
+                    img.style.opacity = 1;
+                    img.style.filter = 'blur(0px)';
+                    img.style.transform = 'scale(1)';
+                } else {
+                    img.style.opacity = 0.5;
+                    img.style.filter = 'blur(5px)';
+                    img.style.transform = 'scale(0.8)';
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % carouselImages.length;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+            updateCarousel();
+        }
+
+
+    </script>
+</body>
+</html>
