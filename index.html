@@ -347,20 +347,6 @@
             z-index: 2;
         }
 
-        #content-wrapper {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        #dynamic-content {
-            padding-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-            flex: 1;
-        }
-
         @media (max-width: 768px) {
             #header nav ul li {
                 margin-left: 15px;
@@ -551,100 +537,97 @@
             </ul>
         </nav>
     </header>
-    <main id="content-wrapper">
-        <main id="content">
-            <section id="main-image-container">
-                <a href="#" id="cotiza-button">Cotiza con nosotros</a>
-            </section>
-            <section class="section">
-                <h1>Bienvenido a ENR Remodelación y Diseño</h1>
-                <p>
-                    Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.
-                </p>
-                <a href="#" class="view-more-button" onclick="scrollPortfolio()">
-                    Ver más proyectos
-                    <span class="arrow"></span>
-                </a>
-            </section>
-            <section class="section portfolio-section">
-                <div class="portfolio-item" data-url="https://raw.githubusercontent.com/OrumST/ENRWEB/refs/heads/main/cocinamodernamin.html">
-                    <div class="carousel">
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1583847268961-b15c9b898440?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista">
-                            <h3>Proyecto Residencial 1</h3>
-                            <p>Diseño de cocina moderna minimalista con isla central, gabinetes de madera clara y detalles en acero inoxidable.</p>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6561c3626e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista 2">
-                            <h3>Proyecto Residencial 1 - Imagen 2</h3>
-                            <p>Detalle de la iluminación empotrada y la campana extractora de diseño en la cocina minimalista.</p>
-                        </div>
+    <main id="content">
+        <section id="main-image-container">
+            <a href="#" id="cotiza-button">Cotiza con nosotros</a>
+        </section>
+        <section class="section">
+            <h1>Bienvenido a ENR Remodelación y Diseño</h1>
+            <p>
+                Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.
+            </p>
+            <a href="#" class="view-more-button" onclick="scrollPortfolio()">
+                Ver más proyectos
+                <span class="arrow"></span>
+            </a>
+        </section>
+        <section class="section portfolio-section">
+            <a href="https://raw.githubusercontent.com/OrumST/ENRWEB/refs/heads/main/cocinamodernamin.html" class="portfolio-item" target="_blank">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1583847268961-b15c9b898440?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista">
+                        <h3>Proyecto Residencial 1</h3>
+                        <p>Diseño de cocina moderna minimalista con isla central, gabinetes de madera clara y detalles en acero inoxidable.</p>
                     </div>
-                    <button class="carousel-control prev" onclick="scrollCarousel(-1, 0)">❮</button>
-                    <button class="carousel-control next" onclick="scrollCarousel(1, 0)">❯</button>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6561c3626e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista 2">
+                        <h3>Proyecto Residencial 1 - Imagen 2</h3>
+                        <p>Detalle de la iluminación empotrada y la campana extractora de diseño en la cocina minimalista.</p>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_2" alt="Proyecto 2">
-                    <h3>Proyecto Comercial 1</h3>
-                    <p>Descripción del proyecto comercial 1. Diseño de espacios de trabajo modernos y eficientes para aumentar la productividad.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_3" alt="Proyecto 3">
-                    <h3>Proyecto Residencial 2</h3>
-                    <p>Descripción del proyecto residencial 2.  Diseño de interiores elegante y sofisticado para residencias de lujo.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_4" alt="Proyecto 4">
-                    <h3>Proyecto Residencial 3</h3>
-                    <p>Descripción del proyecto residencial 3. Espacios exteriores diseñados para el disfrute y la relajación al aire libre.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_5" alt="Proyecto 5">
-                    <h3>Proyecto Comercial 2</h3>
-                    <p>Descripción del proyecto comercial 2. Soluciones de diseño innovadoras para restaurantes y locales comerciales.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_6" alt="Proyecto 6">
-                    <h3>Proyecto Residencial 4</h3>
-                    <p>Descripción del proyecto residencial 4. Remodelación de cocinas y baños con diseños modernos y funcionales.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_7" alt="Proyecto 7">
-                    <h3>Proyecto Residencial 5</h3>
-                    <p>Descripción del proyecto residencial 5. Diseño de casas de playa con estilo costero y materiales resistentes.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_8" alt="Proyecto 8">
-                    <h3>Proyecto Comercial 3</h3>
-                    <p>Descripción del proyecto comercial 3. Diseño de oficinas corporativas que reflejen la identidad de la marca.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_9" alt="Proyecto 9">
-                    <h3>Proyecto Residencial 6</h3>
-                    <p>Descripción del proyecto residencial 6. Diseño de espacios multifuncionales para hogares modernos y dinámicos.</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="URL_DE_PROYECTO_10" alt="Proyecto 10">
-                    <h3>Proyecto Comercial 4</h3>
-                    <p>Descripción del proyecto comercial 4. Diseño de locales comerciales que atraigan a los clientes y mejoren la experiencia de compra.</p>
-                </div>
-            </section>
-            <section class="section services-section">
-                <div class="service-square">
-                    <span>Diseño de Interiores</span>
-                </div>
-                <div class="service-square">
-                    <span>Remodelación Residencial</span>
-                </div>
-                <div class="service-square">
-                    <span>Diseño Comercial</span>
-                </div>
-                <div class="service-square">
-                    <span>Paisajismo</span>
-                </div>
-            </section>
-        </main>
-        <div id="dynamic-content"></div>
+                <button class="carousel-control prev" onclick="scrollCarousel(-1, 0)">❮</button>
+                <button class="carousel-control next" onclick="scrollCarousel(1, 0)">❯</button>
+            </a>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_2" alt="Proyecto 2">
+                <h3>Proyecto Comercial 1</h3>
+                <p>Descripción del proyecto comercial 1. Diseño de espacios de trabajo modernos y eficientes para aumentar la productividad.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_3" alt="Proyecto 3">
+                <h3>Proyecto Residencial 2</h3>
+                <p>Descripción del proyecto residencial 2.  Diseño de interiores elegante y sofisticado para residencias de lujo.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_4" alt="Proyecto 4">
+                <h3>Proyecto Residencial 3</h3>
+                <p>Descripción del proyecto residencial 3. Espacios exteriores diseñados para el disfrute y la relajación al aire libre.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_5" alt="Proyecto 5">
+                <h3>Proyecto Comercial 2</h3>
+                <p>Descripción del proyecto comercial 2. Soluciones de diseño innovadoras para restaurantes y locales comerciales.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_6" alt="Proyecto 6">
+                <h3>Proyecto Residencial 4</h3>
+                <p>Descripción del proyecto residencial 4. Remodelación de cocinas y baños con diseños modernos y funcionales.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_7" alt="Proyecto 7">
+                <h3>Proyecto Residencial 5</h3>
+                <p>Descripción del proyecto residencial 5. Diseño de casas de playa con estilo costero y materiales resistentes.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_8" alt="Proyecto 8">
+                <h3>Proyecto Comercial 3</h3>
+                <p>Descripción del proyecto comercial 3. Diseño de oficinas corporativas que reflejen la identidad de la marca.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_9" alt="Proyecto 9">
+                <h3>Proyecto Residencial 6</h3>
+                <p>Descripción del proyecto residencial 6. Diseño de espacios multifuncionales para hogares modernos y dinámicos.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_10" alt="Proyecto 10">
+                <h3>Proyecto Comercial 4</h3>
+                <p>Descripción del proyecto comercial 4. Diseño de locales comerciales que atraigan a los clientes y mejoren la experiencia de compra.</p>
+            </div>
+        </section>
+        <section class="section services-section">
+            <div class="service-square">
+                <span>Diseño de Interiores</span>
+            </div>
+            <div class="service-square">
+                <span>Remodelación Residencial</span>
+            </div>
+            <div class="service-square">
+                <span>Diseño Comercial</span>
+            </div>
+            <div class="service-square">
+                <span>Paisajismo</span>
+            </div>
+        </section>
     </main>
     <footer id="footer">
         <p>© 2025 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
@@ -673,7 +656,7 @@
             }
         });
 
-function scrollPortfolio() {
+        function scrollPortfolio() {
             const portfolioSection = document.querySelector('.portfolio-section');
             const firstItem = portfolioSection.querySelector('.portfolio-item');
             const itemWidth = firstItem.offsetWidth + 20;
@@ -710,24 +693,6 @@ function scrollPortfolio() {
 
         showItem(carouselIndex, 0);
 
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const url = this.dataset.url;
-                if (url) {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(data => {
-                            const dynamicContent = document.getElementById('dynamic-content');
-                            dynamicContent.innerHTML = data;
-                            dynamicContent.scrollIntoView({ behavior: "smooth" });
-                        })
-                        .catch(error => {
-                            console.error('Error al cargar la página:', error);
-                            alert('No se pudo cargar el contenido. Por favor, intenta de nuevo más tarde.');
-                        });
-                }
-            });
-        });
     </script>
 </body>
 </html>
