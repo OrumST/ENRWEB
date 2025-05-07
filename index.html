@@ -174,10 +174,32 @@
         }
 
         .portfolio-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+        }
+
+        .portfolio-section::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .portfolio-section::-webkit-scrollbar-track {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        .portfolio-section::-webkit-scrollbar-thumb {
+            background-color: #aaa;
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+
+        .portfolio-section::-webkit-scrollbar-thumb:hover {
+            background-color: #eee;
         }
 
         .portfolio-item {
@@ -187,6 +209,14 @@
             background-color: #111;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
+            min-width: 250px;
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 250px; /* Establece el ancho del cuadrado */
         }
 
         .portfolio-item:hover {
@@ -197,6 +227,8 @@
             width: 100%;
             border-radius: 8px;
             margin-bottom: 15px;
+            object-fit: cover;
+            height: 200px; /* Altura fija para la imagen */
         }
 
         .portfolio-item h3 {
@@ -208,6 +240,38 @@
         .portfolio-item p {
             color: #ddd;
             font-size: 0.9em;
+        }
+
+        .view-more-button {
+            display: inline-flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .view-more-button:hover {
+            color: #aaa;
+        }
+
+        .arrow {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22%23fff%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22%3E%3Cpolyline points%3D%229 18 15 12 9 6%22%3E%3C/polyline%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-block;
+            transform: translateX(0);
+        }
+
+        .view-more-button:hover .arrow {
+            transform: translateX(5px);
         }
 
         @media (max-width: 768px) {
@@ -299,21 +363,60 @@
         </section>
         <section class="section portfolio-section">
             <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_1" alt="Proyecto 1">
+                <img src="https://github.com/OrumST/ENRWEB/blob/images/WhatsApp%20Image%202025-05-03%20at%2015.34.38.jpeg" alt="Proyecto 1">
                 <h3>Proyecto Residencial 1</h3>
-                <p>Descripción del proyecto...</p>
+                <p>Descripción del proyecto residencial 1. Este proyecto se enfoca en crear espacios cómodos y funcionales para la vida familiar.</p>
             </div>
             <div class="portfolio-item">
                 <img src="URL_DE_PROYECTO_2" alt="Proyecto 2">
                 <h3>Proyecto Comercial 1</h3>
-                <p>Descripción del proyecto...</p>
+                <p>Descripción del proyecto comercial 1. Diseño de espacios de trabajo modernos y eficientes para aumentar la productividad.</p>
             </div>
             <div class="portfolio-item">
                 <img src="URL_DE_PROYECTO_3" alt="Proyecto 3">
                 <h3>Proyecto Residencial 2</h3>
-                <p>Descripción del proyecto...</p>
+                <p>Descripción del proyecto residencial 2.  Diseño de interiores elegante y sofisticado para residencias de lujo.</p>
+            </div>
+             <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_4" alt="Proyecto 4">
+                <h3>Proyecto Residencial 3</h3>
+                <p>Descripción del proyecto residencial 3. Espacios exteriores diseñados para el disfrute y la relajación al aire libre.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_5" alt="Proyecto 5">
+                <h3>Proyecto Comercial 2</h3>
+                <p>Descripción del proyecto comercial 2. Soluciones de diseño innovadoras para restaurantes y locales comerciales.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_6" alt="Proyecto 6">
+                <h3>Proyecto Residencial 4</h3>
+                <p>Descripción del proyecto residencial 4. Remodelación de cocinas y baños con diseños modernos y funcionales.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_7" alt="Proyecto 7">
+                <h3>Proyecto Residencial 5</h3>
+                <p>Descripción del proyecto residencial 5. Diseño de casas de playa con estilo costero y materiales resistentes.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_8" alt="Proyecto 8">
+                <h3>Proyecto Comercial 3</h3>
+                <p>Descripción del proyecto comercial 3. Diseño de oficinas corporativas que reflejen la identidad de la marca.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_9" alt="Proyecto 9">
+                <h3>Proyecto Residencial 6</h3>
+                <p>Descripción del proyecto residencial 6. Diseño de espacios multifuncionales para hogares modernos y dinámicos.</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="URL_DE_PROYECTO_10" alt="Proyecto 10">
+                <h3>Proyecto Comercial 4</h3>
+                <p>Descripción del proyecto comercial 4. Diseño de locales comerciales que atraigan a los clientes y mejoren la experiencia de compra.</p>
             </div>
         </section>
+        <a href="#" class="view-more-button" onclick="scrollPortfolio()">
+            Ver más proyectos
+            <span class="arrow"></span>
+        </a>
     </main>
     <footer id="footer">
         <p>© 2025 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
@@ -341,6 +444,13 @@
                 headerLogo.style.opacity = 0;
             }
         });
+
+        function scrollPortfolio() {
+            const portfolioSection = document.querySelector('.portfolio-section');
+            const firstItem = portfolioSection.querySelector('.portfolio-item');
+            const itemWidth = firstItem.offsetWidth + 20;
+            portfolioSection.scrollLeft += itemWidth;
+        }
     </script>
 </body>
 </html>
