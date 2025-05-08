@@ -4,695 +4,534 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENR Remodelación y Diseño</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            margin: 0;
             font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
+            background-color: #1a202c;
+            color: #f7fafc;
+            margin: 0;
+            padding: 0;
         }
-
-        #header {
-            position: fixed;
+        header {
+            background-color: #2d3748;
+            padding: 1rem 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            padding: 15px 20px;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            transition: background-color 0.5s ease;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-
-        #header.scrolled {
-            background-color: rgba(0, 0, 0, 0.8);
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f56565;
+            transition: color 0.3s ease;
+            margin: 0 0 0 1rem;
         }
-
-        #header .logo-header {
-            width: 120px;
-            transition: width 0.5s ease;
-            opacity: 0;
+        header h1:hover {
+            color: #ed8936;
         }
-
-        #header.scrolled .logo-header {
-            width: 80px;
-            opacity: 1;
+        header nav {
         }
-
-        #header nav {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        #header nav ul {
+        header nav ul {
             list-style: none;
             display: flex;
             margin: 0;
             padding: 0;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            margin-left: -50px;
         }
-
-        #header.scrolled nav ul {
-            opacity: 1;
+        header nav ul li {
+            margin-left: 2rem;
         }
-
-        #header nav ul li {
-            margin-left: 25px;
-        }
-
-        #header nav ul li a {
-            color: #fff;
+        header nav ul li a {
+            color: #f7fafc;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1em;
             transition: color 0.3s ease;
         }
-
-        #header nav ul li a:hover {
-            color: #aaa;
+        header nav ul li a:hover {
+            color: #cbd5e0;
         }
-
-        #logo-container {
+        section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        #inicio h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f56565;
+            margin-bottom: 1rem;
+        }
+        #inicio p {
+            font-size: 1.1rem;
+            color: #cbd5e0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            background-color: #f56565;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: inline-block;
+            animation: zoomInOut 1.5s ease-in-out infinite;
+        }
+        .cta-button:hover {
+            background-color: #ed8936;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        @keyframes zoomInOut {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        #proyectos h2, #servicios h2, #contacto h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f56565;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .proyecto-card {
+            background-color: #2d3748;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .proyecto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+        .proyecto-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .proyecto-card .overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .proyecto-card:hover .overlay {
+            opacity: 1;
+        }
+        .proyecto-card .overlay h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            text-align: center;
+        }
+        .proyecto-card .content {
+            padding: 1.5rem;
+        }
+        .proyecto-card .content p {
+            color: #cbd5e0;
+            font-size: 1rem;
+        }
+        .ver-mas-proyectos {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid #f56565;
+            color: #f56565;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        .ver-mas-proyectos:hover {
+            background-color: #f56565;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        #servicios .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .servicio-card {
+            background-color: #2d3748;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+        .servicio-card h3 {
+            font-size: 1.5rem;
+            color: #f56565;
+            margin-bottom: 1rem;
+        }
+        .servicio-card p {
+            color: #cbd5e0;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .servicio-card ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #cbd5e0;
+            font-size: 1rem;
+        }
+        .servicio-card ul li {
+            margin-bottom: 0.5rem;
+        }
+        #contacto .formulario-contacto {
+            background-color: #2d3748;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #contacto .formulario-contacto h2 {
+            font-size: 2rem;
+            color: #f56565;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        #contacto .formulario-contacto form {
+            display: flex;
+            flex-direction: column;
+        }
+        #contacto .formulario-contacto label {
+            margin-bottom: 0.5rem;
+            color: #cbd5e0;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            text-align: left;
+        }
+        #contacto .formulario-contacto input,
+        #contacto .formulario-contacto textarea {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #4a5568;
+            margin-bottom: 1rem;
+            background-color: #edf2f7;
+            color: #2d3748;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        #contacto .formulario-contacto input:focus,
+        #contacto .formulario-contacto textarea:focus {
+            border-color: #f56565;
+            box-shadow: 0 0 0 3px rgba(244, 113, 113, 0.2);
+        }
+        #contacto .formulario-contacto textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        #contacto .formulario-contacto button {
+            background-color: #f56565;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            align-self: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #contacto .formulario-contacto button:hover {
+            background-color: #ed8936;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        footer {
+            background-color: #2d3748;
+            color: #cbd5e0;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+        /* Estilos para la pantalla de carga */
+        .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
             background-color: #000;
-            z-index: 10;
-            transition: all 0.7s ease;
-        }
-
-        #logo-container.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.5);
-        }
-
-        #logo {
-            width: 500px;
-            transition: width 0.7s ease;
-        }
-
-        #content {
-            flex: 1;
-            padding-top: 80px;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.7s ease;
-            transform: translateY(0);
-        }
-
-        #content.show {
-            transform: translateY(0);
-        }
-
-        #content h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        #content p {
-            font-size: 1.1em;
-            line-height: 1.7em;
-            color: #ddd;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        #footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        #main-image-container {
-            width: 100%;
-            height: 60vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 40px;
-            border-radius: 8px;
-        }
-
-        #main-image {
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .section {
-            margin-bottom: 60px;
-            text-align: center;
-        }
-
-        .portfolio-section {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding-bottom: 20px;
-            overflow-y: hidden;
-            flex-wrap: nowrap;
-        }
-
-        .portfolio-section::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .portfolio-section::-webkit-scrollbar-track {
-            background: #333;
-            border-radius: 10px;
-        }
-
-        .portfolio-section::-webkit-scrollbar-thumb {
-            background-color: #aaa;
-            border-radius: 10px;
-            border: 2px solid #333;
-        }
-
-        .portfolio-section::-webkit-scrollbar-thumb:hover {
-            background-color: #eee;
-        }
-
-        .portfolio-item {
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            background-color: #111;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            min-width: 250px;
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-            text-align: left;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-logo {
+            width: 150px;
             height: auto;
-            width: 250px;
-            cursor: pointer;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease, pulse 2s infinite alternate;
         }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        .portfolio-item img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            object-fit: cover;
-            height: 200px;
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
-
-        .portfolio-item h3 {
+        .loading-text {
+            font-size: 1.5rem;
             color: #fff;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
         }
-
-        .portfolio-item p {
-            color: #ddd;
-            font-size: 0.9em;
-        }
-
-        .view-more-button {
-            display: inline-flex;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            margin-top: 20px;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .view-more-button:hover {
-            color: #aaa;
-        }
-
-        .arrow {
-            width: 24px;
-            height: 24px;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22%23fff%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22%3E%3Cpolyline points%3D%229 18 15 12 9 6%22%3E%3C/polyline%3E%3C/svg%3E');
-            background-repeat: no-repeat;
-            background-size: contain;
-            display: inline-block;
-            transform: translateX(0);
-        }
-
-        .view-more-button:hover .arrow {
-            transform: translateX(5px);
-        }
-
-        #cotiza-button {
-            background-color: #00B0FF;
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-            display: inline-block;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-        }
-
-        #cotiza-button:hover {
-            background-color: #0086CB;
-            transform: translateY(-5px);
-        }
-
-        .services-section {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .service-square {
-            width: 250px;
-            height: 250px;
-            background-color: #111;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2em;
-            color: #fff;
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        .progress-bar {
+            width: 80%;
+            height: 1rem;
+            background-color: #4a5568;
+            border-radius: 0.5rem;
             position: relative;
             overflow: hidden;
         }
-
-        .service-square:hover {
-            background-color: #1E1E1E;
-            transform: translateY(-10px);
-        }
-
-        .service-square::before {
-            content: '';
+        .progress-bar-fill {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #00B0FF, #00FFFF);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
+            background-color: #f56565; /* Color naranja */
+            border-radius: 0.5rem;
+            width: 0;
+            transition: width 0.3s ease; /* Transición más rápida */
         }
-
-        .service-square:hover::before {
-            opacity: 0.8;
-        }
-
-        .service-square span {
-            z-index: 2;
-        }
-
-        @media (max-width: 768px) {
-            #header nav ul li {
-                margin-left: 15px;
-            }
-
-            #header nav ul li a {
-                font-size: 1em;
-            }
-
-            #content h1 {
-                font-size: 2em;
-            }
-
-            #content p {
-                font-size: 1em;
-            }
-
-            #main-image-container {
-                height: 40vh;
-            }
-
-            .portfolio-section {
-                grid-template-columns: 1fr;
-            }
-
-            #logo {
-                width: 90%;
-            }
-
-            .services-section {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .service-square {
-                width: 90%;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            #header nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-left: 0;
-            }
-
-            #header nav ul li {
-                margin-left: 0;
-                margin-bottom: 10px;
-            }
-
-            #content h1 {
-                font-size: 1.75em;
-            }
-
-            #content p {
-                font-size: 0.9em;
-            }
-
-            #main-image-container {
-                height: 30vh;
-            }
-        }
-
-        /* Estilos para el carrusel */
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding-bottom: 20px;
-            overflow-y: hidden;
-            position: relative;
-            align-items: center;
-        }
-
-        .carousel::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .carousel::-webkit-scrollbar-track {
-            background: #333;
-            border-radius: 10px;
-        }
-
-        .carousel::-webkit-scrollbar-thumb {
-            background-color: #aaa;
-            border-radius: 10px;
-            border: 2px solid #333;
-        }
-
-        .carousel::-webkit-scrollbar-thumb:hover {
-            background-color: #eee;
-        }
-
-        .carousel-item {
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            background-color: #111;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            min-width: 250px;
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
+        /* Estilos para el logo y el scroll inicial */
+        .logo {
+            transition: transform 0.5s ease;
             height: auto;
-            width: 250px;
+            max-width: 80px;
         }
 
-        .carousel-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .carousel-item img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            object-fit: cover;
-            height: 200px;
-        }
-
-        .carousel-item h3 {
-            color: #fff;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .carousel-item p {
-            color: #ddd;
-            font-size: 0.9em;
-        }
-
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 10;
-            transition: background-color 0.3s ease;
+        header .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
             justify-content: center;
-            height: 40px;
-            width: 40px;
+            align-items: center;
         }
-
-        .carousel-control:hover {
-            background-color: rgba(0, 0, 0, 0.7);
+        header nav ul li {
+            margin-left: 2rem;
         }
-
-        .carousel-control.prev {
-            left: 10px;
-        }
-
-        .carousel-control.next {
-            right: 10px;
+        header nav ul li a {
+            color: #f7fafc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <div id="logo-container">
-        <img id="logo" src="https://github.com/OrumST/ENRWEB/blob/images/LOGO%20ENR%20SIN%20FONDO.png?raw=true" alt="Logo de ENR Remodelación y Diseño">
+    <div class="loading-screen">
+        <img src="http://imgfz.com/i/XSaJOZv.png" alt="ENR Remodelación y Diseño Logo" class="loading-logo">
+        <p class="loading-text">Bienvenido</p>
+        <div class="progress-bar">
+            <div class="progress-bar-fill"></div>
+        </div>
     </div>
-    <header id="header">
-        <img src="https://github.com/OrumST/ENRWEB/blob/images/LOGO%20ENR%20SIN%20FONDO.png?raw=true" alt="Logo de ENR Remodelación y Diseño" class="logo-header">
-        <nav>
-            <ul>
-                <li><a href="#">INICIO</a></li>
-                <li><a href="#">PORTAFOLIO</a></li>
-                <li><a href="#">NOSOTROS</a></li>
-                <li><a href="#">SERVICIOS</a></li>
-                <li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
-        </nav>
+
+    <header style="display: none;">
+        <div class="container">
+            <div style="display: flex; align-items: center;">
+                <h1 class="logo small">
+                    <img src="http://imgfz.com/i/XSaJOZv.png" alt="ENR Remodelación y Diseño Logo" >
+                </h1>
+                <h1>ENR Remodelación y Diseño</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main id="content">
-        <section id="main-image-container">
-            <a href="#" id="cotiza-button">Cotiza con nosotros</a>
-        </section>
-        <section class="section">
-            <h1>Bienvenido a ENR Remodelación y Diseño</h1>
-            <p>
-                Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.
-            </p>
-            <a href="#" class="view-more-button" onclick="scrollPortfolio()">
-                Ver más proyectos
-                <span class="arrow"></span>
-            </a>
-        </section>
-        <section class="section portfolio-section">
-            <a href="https://raw.githubusercontent.com/OrumST/ENRWEB/refs/heads/main/cocinamodernamin.html" class="portfolio-item" target="_blank">
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1583847268961-b15c9b898440?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista">
-                        <h3>Proyecto Residencial 1</h3>
-                        <p>Diseño de cocina moderna minimalista con isla central, gabinetes de madera clara y detalles en acero inoxidable.</p>
+
+    <section id="inicio" style="display: none;">
+        <div class="container">
+            <h2>Bienvenido a ENR Remodelación y Diseño</h2>
+            <p>Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.</p>
+            <a href="#contacto" class="cta-button">Cotiza con nosotros</a>
+        </div>
+    </section>
+
+    <section id="proyectos" style="display: none;">
+        <div class="container">
+            <h2>Nuestros Proyectos</h2>
+            <div class="proyectos-grid">
+                <div class="proyecto-card">
+                    <img src="https://github.com/OrumST/ENRWEB/blob/images/cocina-enr.jpeg?raw=true" alt="Cocina Moderna Minimalista">
+                    <div class="overlay">
+                        <h3><a href="https://enrweb.onrender.com/cocinamodernamin.html" style="color: #fff; text-decoration: none;">Cocina Moderna Minimalista</a></h3>
                     </div>
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6561c3626e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cocina Moderna Minimalista 2">
-                        <h3>Proyecto Residencial 1 - Imagen 2</h3>
-                        <p>Detalle de la iluminación empotrada y la campana extractora de diseño en la cocina minimalista.</p>
+                    <div class="content">
+                        <p>Descripción del proyecto de cocina moderna minimalista. Diseño elegante y funcional.</p>
                     </div>
                 </div>
-                <button class="carousel-control prev" onclick="scrollCarousel(-1, 0)">❮</button>
-                <button class="carousel-control next" onclick="scrollCarousel(1, 0)">❯</button>
-            </a>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_2" alt="Proyecto 2">
-                <h3>Proyecto Comercial 1</h3>
-                <p>Descripción del proyecto comercial 1. Diseño de espacios de trabajo modernos y eficientes para aumentar la productividad.</p>
+                <div class="proyecto-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Proyecto Residencial 2">
+                    <div class="overlay">
+                        <h3>Proyecto Residencial 2</h3>
+                    </div>
+                    <div class="content">
+                        <p>Descripción del segundo proyecto residencial. Espacios innovadores y confortables.</p>
+                    </div>
+                </div>
+                <div class="proyecto-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Proyecto Comercial 1">
+                    <div class="overlay">
+                        <h3>Proyecto Comercial 1</h3>
+                    </div>
+                    <div class="content">
+                        <p>Descripción del primer proyecto comercial. Diseño funcional y atractivo.</p>
+                    </div>
+                </div>
             </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_3" alt="Proyecto 3">
-                <h3>Proyecto Residencial 2</h3>
-                <p>Descripción del proyecto residencial 2.  Diseño de interiores elegante y sofisticado para residencias de lujo.</p>
+            <a href="#proyectos" class="ver-mas-proyectos">Ver más proyectos</a>
+        </div>
+    </section>
+
+    <section id="servicios" style="display: none;">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <h3>Diseño de Interiores</h3>
+                    <p>Creación de espacios únicos y personalizados que reflejen tu estilo y necesidades.</p>
+                    <ul>
+                        <li>Consultoría de diseño</li>
+                        <li>Planificación de espacios</li>
+                        <li>Selección de materiales y acabados</li>
+                        <li>Diseño de mobiliario</li>
+                    </ul>
+                </div>
+                <div class="servicio-card">
+                    <h3>Remodelación Residencial</h3>
+                    <p>Transformamos tu hogar para que se adapte a tu estilo de vida y necesidades.</p>
+                    <ul>
+                        <li>Remodelación de cocinas y baños</li>
+                        <li>Ampliaciones y renovaciones</li>
+                        <li>Instalaciones y acabados</li>
+                        <li>Gestión de proyectos</li>
+                    </ul>
+                </div>
+                <div class="servicio-card">
+                    <h3>Diseño Comercial</h3>
+                    <p>Creamos espacios comerciales atractivos y funcionales que potencien tu marca.</p>
+                    <ul>
+                        <li>Diseño de oficinas y locales</li>
+                        <li>Imagen corporativa</li>
+                        <li>Diseño de escaparates</li>
+                        <li>Optimización de espacios</li>
+                    </ul>
+                </div>
             </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_4" alt="Proyecto 4">
-                <h3>Proyecto Residencial 3</h3>
-                <p>Descripción del proyecto residencial 3. Espacios exteriores diseñados para el disfrute y la relajación al aire libre.</p>
+        </div>
+    </section>
+
+    <section id="contacto" style="display: none;">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="formulario-contacto">
+                <form>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                    <button type="submit">Enviar mensaje</button>
+                </form>
             </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_5" alt="Proyecto 5">
-                <h3>Proyecto Comercial 2</h3>
-                <p>Descripción del proyecto comercial 2. Soluciones de diseño innovadoras para restaurantes y locales comerciales.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_6" alt="Proyecto 6">
-                <h3>Proyecto Residencial 4</h3>
-                <p>Descripción del proyecto residencial 4. Remodelación de cocinas y baños con diseños modernos y funcionales.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_7" alt="Proyecto 7">
-                <h3>Proyecto Residencial 5</h3>
-                <p>Descripción del proyecto residencial 5. Diseño de casas de playa con estilo costero y materiales resistentes.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_8" alt="Proyecto 8">
-                <h3>Proyecto Comercial 3</h3>
-                <p>Descripción del proyecto comercial 3. Diseño de oficinas corporativas que reflejen la identidad de la marca.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_9" alt="Proyecto 9">
-                <h3>Proyecto Residencial 6</h3>
-                <p>Descripción del proyecto residencial 6. Diseño de espacios multifuncionales para hogares modernos y dinámicos.</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="URL_DE_PROYECTO_10" alt="Proyecto 10">
-                <h3>Proyecto Comercial 4</h3>
-                <p>Descripción del proyecto comercial 4. Diseño de locales comerciales que atraigan a los clientes y mejoren la experiencia de compra.</p>
-            </div>
-        </section>
-        <section class="section services-section">
-            <div class="service-square">
-                <span>Diseño de Interiores</span>
-            </div>
-            <div class="service-square">
-                <span>Remodelación Residencial</span>
-            </div>
-            <div class="service-square">
-                <span>Diseño Comercial</span>
-            </div>
-            <div class="service-square">
-                <span>Paisajismo</span>
-            </div>
-        </section>
-    </main>
-    <footer id="footer">
-        <p>© 2025 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
+        </div>
+    </section>
+
+    <footer style="display: none;">
+        <div class="container">
+            <p>© 2024 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
+        </div>
     </footer>
     <script>
-        window.addEventListener('scroll', function() {
-            let scrollPosition = window.scrollY;
-            let logoContainer = document.getElementById('logo-container');
-            let logo = document.getElementById('logo');
-            let header = document.getElementById('header');
-            let headerLogo = document.querySelector('#header .logo-header');
-            let content = document.getElementById('content');
+        const loadingScreen = document.querySelector('.loading-screen');
+        const progressBarFill = document.querySelector('.progress-bar-fill');
+        const sections = document.querySelectorAll('section, header, footer');
+        const headerLogo = document.querySelector('.logo');
 
-            if (scrollPosition > 200) {
-                logoContainer.classList.add('hidden');
-                header.classList.add('scrolled');
-                content.classList.add('show');
-                logo.style.width = '100px';
-                headerLogo.style.opacity = 1;
-            } else {
-                logoContainer.classList.remove('hidden');
-                header.classList.remove('scrolled');
-                content.classList.remove('show');
-                logo.style.width = '500px';
-                headerLogo.style.opacity = 0;
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 2; // Incremento de la barra de progreso ajustado
+            progressBarFill.style.width = `${progress}%`;
+            if (progress >= 100) {
+                clearInterval(interval);
+                loadingScreen.classList.add('hidden');
+                sections.forEach(section => section.style.display = '');
+                headerLogo.classList.add('small');
             }
-        });
-
-        function scrollPortfolio() {
-            const portfolioSection = document.querySelector('.portfolio-section');
-            const firstItem = portfolioSection.querySelector('.portfolio-item');
-            const itemWidth = firstItem.offsetWidth + 20;
-            portfolioSection.scrollLeft += itemWidth;
-        }
-
-        let carouselIndex = 0;
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        const totalItems = carouselItems.length;
-        const carousels = document.querySelectorAll('.carousel');
-
-        function showItem(index, carouselIndex) {
-            const items = carousels[carouselIndex].querySelectorAll('.carousel-item');
-            items.forEach((item, i) => {
-                item.style.display = i === index ? 'block' : 'none';
-            });
-        }
-
-        function scrollCarousel(direction, carouselIndex) {
-            let index = 0;
-            if(carouselIndex === 0){
-                 index = 0;
-            }
-            const items = carousels[carouselIndex].querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            carouselIndex += direction;
-            if (carouselIndex < 0) {
-                carouselIndex = totalItems - 1;
-            } else if (carouselIndex >= totalItems) {
-                carouselIndex = 0;
-            }
-            showItem(carouselIndex, 0);
-        }
-
-        showItem(carouselIndex, 0);
-
+        }, 10); // Intervalo de tiempo ajustado para que sea más rápido
     </script>
 </body>
 </html>
