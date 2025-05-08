@@ -303,11 +303,12 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 0.5s ease;
+            opacity: 1;
+            transition: none;
+            pointer-events: none;
         }
         .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
         .loading-logo {
             width: 150px;
@@ -343,10 +344,10 @@
             top: 0;
             left: 0;
             height: 100%;
-            background-color: #f56565; /* Color naranja */
+            background-color: #f56565;
             border-radius: 0.5rem;
             width: 0;
-            transition: width 0.3s ease; /* Transición más rápida */
+            transition: width 0.5s ease;
         }
         /* Estilos para el logo y el scroll inicial */
         .logo {
@@ -523,15 +524,21 @@
 
         let progress = 0;
         const interval = setInterval(() => {
-            progress += 2; // Incremento de la barra de progreso ajustado
+            progress += 1;
             progressBarFill.style.width = `${progress}%`;
             if (progress >= 100) {
                 clearInterval(interval);
                 loadingScreen.classList.add('hidden');
                 sections.forEach(section => section.style.display = '');
                 headerLogo.classList.add('small');
+
             }
-        }, 10); // Intervalo de tiempo ajustado para que sea más rápido
+        }, 20);
+
+        loadingScreen.addEventListener('transitionend', () => {
+             sections.forEach(section => section.style.display = '');
+             headerLogo.classList.add('small');
+        });
     </script>
 </body>
 </html>
