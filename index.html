@@ -9,13 +9,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c;
-            color: #f7fafc;
+            background-color: #1a1a1a; /* Fondo oscuro */
+            color: #f7fafc; /* Texto claro */
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         header {
-            background-color: #2d3748;
+            background-color: #2d2d2d; /* Fondo del header más oscuro */
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -33,12 +34,11 @@
         header h1 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #f56565;
+            color: #FACC15; /* Color de acento: Ámbar */
             transition: color 0.3s ease;
-            margin: 0 0 0 1rem;
         }
         header h1:hover {
-            color: #ed8936;
+            color: #EAB308; /* Color de acento al pasar el cursor: Ámbar más oscuro */
         }
         header nav {
         }
@@ -54,16 +54,16 @@
             margin-left: 2rem;
         }
         header nav ul li a {
-            color: #f7fafc;
+            color: #f7fafc; /* Color del texto de navegación */
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
         header nav ul li a:hover {
-            color: #cbd5e0;
+            color: #cbd5e0; /* Color del texto de navegación al pasar el cursor */
         }
         section {
-            padding: 5rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
         section .container {
@@ -72,22 +72,22 @@
             padding: 0 1rem;
         }
         #inicio h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: #f56565;
+            color: #FACC15; /* Color de acento: Ámbar */
             margin-bottom: 1rem;
         }
         #inicio p {
-            font-size: 1.1rem;
-            color: #cbd5e0;
+            font-size: 1rem;
+            color: #cbd5e0; /* Color del texto */
             margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         .cta-button {
-            background-color: #f56565;
-            color: #fff;
+            background-color: #FACC15; /* Color del botón de CTA: Ámbar */
+            color: #1a1a1a; /* Texto oscuro para contraste */
             padding: 1rem 2rem;
             border-radius: 0.5rem;
             text-decoration: none;
@@ -99,7 +99,7 @@
             animation: zoomInOut 1.5s ease-in-out infinite;
         }
         .cta-button:hover {
-            background-color: #ed8936;
+            background-color: #EAB308; /* Color del botón de CTA al pasar el cursor: Ámbar más oscuro */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
@@ -109,24 +109,25 @@
             100% { transform: scale(1); }
         }
         #proyectos h2, #servicios h2, #contacto h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: #f56565;
-            margin-bottom: 3rem;
+            color: #FACC15; /* Color de acento: Ámbar */
+            margin-bottom: 2rem;
             text-align: center;
         }
         .proyectos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
         .proyecto-card {
-            background-color: #2d3748;
+            background-color: #2d2d2d; /* Fondo de la tarjeta de proyecto */
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
         .proyecto-card:hover {
             transform: translateY(-10px);
@@ -140,7 +141,7 @@
         .proyecto-card .overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro para el overlay */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -151,44 +152,46 @@
             opacity: 1;
         }
         .proyecto-card .overlay h3 {
-            font-size: 1.5rem;
-            color: #fff;
+            font-size: 1.2rem;
+            color: #fff; /* Texto blanco para el overlay */
             text-align: center;
+            text-decoration: none;
         }
         .proyecto-card .content {
-            padding: 1.5rem;
+            padding: 1rem;
         }
         .proyecto-card .content p {
-            color: #cbd5e0;
-            font-size: 1rem;
+            color: #cbd5e0; /* Color del texto de descripción */
+            font-size: 0.9rem;
         }
         .ver-mas-proyectos {
             display: inline-block;
             background-color: transparent;
-            border: 2px solid #f56565;
-            color: #f56565;
+            border: 2px solid #FACC15; /* Borde de acento: Ámbar */
+            color: #FACC15; /* Color de acento: Ámbar */
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-top: 1rem;
         }
         .ver-mas-proyectos:hover {
-            background-color: #f56565;
-            color: #fff;
+            background-color: #FACC15; /* Fondo de acento al pasar el cursor: Ámbar */
+            color: #1a1a1a; /* Texto oscuro para contraste */
             transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
         #servicios .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
         .servicio-card {
-            background-color: #2d3748;
+            background-color: #2d2d2d; /* Fondo de la tarjeta de servicio */
             border-radius: 0.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: left;
@@ -198,36 +201,36 @@
             box-shadow: 0 8px 12px rgba(0,0,0,0.2);
         }
         .servicio-card h3 {
-            font-size: 1.5rem;
-            color: #f56565;
+            font-size: 1.2rem;
+            color: #FACC15; /* Color de acento: Ámbar */
             margin-bottom: 1rem;
         }
         .servicio-card p {
-            color: #cbd5e0;
-            font-size: 1rem;
+            color: #cbd5e0; /* Color del texto de descripción */
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
         .servicio-card ul {
             list-style: disc;
             padding-left: 1.5rem;
-            color: #cbd5e0;
-            font-size: 1rem;
+            color: #cbd5e0; /* Color del texto de lista */
+            font-size: 0.9rem;
         }
         .servicio-card ul li {
             margin-bottom: 0.5rem;
         }
         #contacto .formulario-contacto {
-            background-color: #2d3748;
+            background-color: #2d2d2d; /* Fondo del formulario de contacto */
             border-radius: 0.5rem;
             padding: 2rem;
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         #contacto .formulario-contacto h2 {
-            font-size: 2rem;
-            color: #f56565;
-            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: #FACC15; /* Color de acento: Ámbar */
+            margin-bottom: 1.5rem;
             text-align: center;
         }
         #contacto .formulario-contacto form {
@@ -236,9 +239,9 @@
         }
         #contacto .formulario-contacto label {
             margin-bottom: 0.5rem;
-            color: #cbd5e0;
+            color: #cbd5e0; /* Color del texto de etiqueta */
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
             display: block;
             text-align: left;
         }
@@ -246,32 +249,32 @@
         #contacto .formulario-contacto textarea {
             padding: 0.75rem;
             border-radius: 0.5rem;
-            border: 1px solid #4a5568;
+            border: 1px solid #4a4a4a; /* Borde del input */
             margin-bottom: 1rem;
-            background-color: #edf2f7;
-            color: #2d3748;
-            font-size: 1rem;
+            background-color: #3a3a3a; /* Fondo del input */
+            color: #f7fafc; /* Texto del input */
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             outline: none;
         }
         #contacto .formulario-contacto input:focus,
         #contacto .formulario-contacto textarea:focus {
-            border-color: #f56565;
-            box-shadow: 0 0 0 3px rgba(244, 113, 113, 0.2);
+            border-color: #FACC15; /* Borde del input al enfocar: Ámbar */
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2); /* Sombra de acento */
         }
         #contacto .formulario-contacto textarea {
             resize: vertical;
-            min-height: 150px;
+            min-height: 100px;
         }
         #contacto .formulario-contacto button {
-            background-color: #f56565;
-            color: #fff;
+            background-color: #FACC15; /* Color del botón de formulario: Ámbar */
+            color: #1a1a1a; /* Texto oscuro para contraste */
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
             margin-top: 0.5rem;
@@ -279,16 +282,16 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         #contacto .formulario-contacto button:hover {
-            background-color: #ed8936;
+            background-color: #EAB308; /* Color del botón de formulario al pasar el cursor: Ámbar más oscuro */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
         footer {
-            background-color: #2d3748;
-            color: #cbd5e0;
+            background-color: #2d2d2d; /* Fondo del footer */
+            color: #cbd5e0; /* Color del texto del footer */
             padding: 1rem;
             text-align: center;
-            margin-top: 5rem;
+            margin-top: 3rem;
         }
         /* Estilos para la pantalla de carga */
         .loading-screen {
@@ -304,10 +307,12 @@
             align-items: center;
             z-index: 1000;
             opacity: 1;
-            transition: none;
+            transition: opacity 0.5s ease-in-out;
             pointer-events: none;
         }
         .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
             display: none;
         }
         .loading-logo {
@@ -325,7 +330,7 @@
             to { transform: scale(1.1); }
         }
         .loading-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #fff;
             margin-bottom: 1rem;
             opacity: 0;
@@ -333,8 +338,8 @@
         }
         .progress-bar {
             width: 80%;
-            height: 1rem;
-            background-color: #4a5568;
+            height: 0.75rem;
+            background-color: #4a4a4a; /* Fondo de la barra de progreso */
             border-radius: 0.5rem;
             position: relative;
             overflow: hidden;
@@ -344,7 +349,7 @@
             top: 0;
             left: 0;
             height: 100%;
-            background-color: #f56565;
+            background-color: #FACC15; /* Color de relleno de la barra de progreso: Ámbar */
             border-radius: 0.5rem;
             width: 0;
             transition: width 0.5s ease;
@@ -382,6 +387,46 @@
             font-weight: 500;
             transition: color 0.3s ease;
         }
+
+        /* Estilos para pantallas pequeñas */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            header nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            header nav ul li {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            section {
+                padding: 2rem 0;
+            }
+            #inicio h2 {
+                font-size: 2rem;
+            }
+            #inicio p {
+                font-size: 0.9rem;
+            }
+            .proyectos-grid, .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+            .proyecto-card .overlay h3 {
+                font-size: 1rem;
+            }
+            .formulario-contacto {
+                padding: 1.5rem;
+            }
+            #contacto h2 {
+                font-size: 1.5rem;
+            }
+            .loading-text {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -393,9 +438,9 @@
         </div>
     </div>
 
-    <header style="display: none;">
+    <header>
         <div class="container">
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                 <h1 class="logo small">
                     <img src="http://imgfz.com/i/XSaJOZv.png" alt="ENR Remodelación y Diseño Logo" >
                 </h1>
@@ -412,7 +457,7 @@
         </div>
     </header>
 
-    <section id="inicio" style="display: none;">
+    <section id="inicio">
         <div class="container">
             <h2>Bienvenido a ENR Remodelación y Diseño</h2>
             <p>Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.</p>
@@ -420,35 +465,41 @@
         </div>
     </section>
 
-    <section id="proyectos" style="display: none;">
+    <section id="proyectos">
         <div class="container">
             <h2>Nuestros Proyectos</h2>
             <div class="proyectos-grid">
                 <div class="proyecto-card">
                     <img src="https://github.com/OrumST/ENRWEB/blob/images/cocina-enr.jpeg?raw=true" alt="Cocina Moderna Minimalista">
-                    <div class="overlay">
-                        <h3><a href="https://enrweb.onrender.com/cocinamodernamin.html" style="color: #fff; text-decoration: none;">Cocina Moderna Minimalista</a></h3>
-                    </div>
+                    <a href="https://enrweb.onrender.com/cocinamodernamin.html" style="text-decoration: none;">
+                        <div class="overlay">
+                            <h3>Cocina Moderna Minimalista</h3>
+                        </div>
+                    </a>
                     <div class="content">
                         <p>Descripción del proyecto de cocina moderna minimalista. Diseño elegante y funcional.</p>
                     </div>
                 </div>
                 <div class="proyecto-card">
-                    <img src="https://via.placeholder.com/400x300" alt="Proyecto Residencial 2">
-                    <div class="overlay">
-                        <h3>Proyecto Residencial 2</h3>
-                    </div>
+                    <a href="https://enrweb.onrender.com/mueblevestidor.html" style="text-decoration: none;">
+                        <img src="http://imgfz.com/i/cMEN2Qw.png" alt="Ropero/Vestidor a medida">
+                        <div class="overlay">
+                            <h3>Ropero/Vestidor a Medida</h3>
+                        </div>
+                    </a>
                     <div class="content">
-                        <p>Descripción del segundo proyecto residencial. Espacios innovadores y confortables.</p>
+                        <p>Diseño exclusivo de ropero/vestidor que maximiza el espacio y la funcionalidad, adaptado al estilo de vida del cliente.</p>
                     </div>
                 </div>
                 <div class="proyecto-card">
-                    <img src="https://via.placeholder.com/400x300" alt="Proyecto Comercial 1">
-                    <div class="overlay">
-                        <h3>Proyecto Comercial 1</h3>
-                    </div>
+                    <a href="https://enrweb.onrender.com/paredespejo.html" style="text-decoration: none;">
+                        <img src="http://imgfz.com/i/evc6nhp.jpeg" alt="Pared con espejo y detalles de madera">
+                        <div class="overlay">
+                            <h3>Pared Decorativa con Espejo</h3>
+                        </div>
+                    </a>
                     <div class="content">
-                        <p>Descripción del primer proyecto comercial. Diseño funcional y atractivo.</p>
+                        <p>Transformación de un espacio con una pared decorativa que integra un espejo incrustado y elegantes detalles en madera, aportando amplitud y sofisticación al ambiente.</p>
                     </div>
                 </div>
             </div>
@@ -456,45 +507,27 @@
         </div>
     </section>
 
-    <section id="servicios" style="display: none;">
+    <section id="servicios">
         <div class="container">
             <h2>Nuestros Servicios</h2>
             <div class="servicios-grid">
                 <div class="servicio-card">
                     <h3>Diseño de Interiores</h3>
                     <p>Creación de espacios únicos y personalizados que reflejen tu estilo y necesidades.</p>
-                    <ul>
-                        <li>Consultoría de diseño</li>
-                        <li>Planificación de espacios</li>
-                        <li>Selección de materiales y acabados</li>
-                        <li>Diseño de mobiliario</li>
-                    </ul>
                 </div>
                 <div class="servicio-card">
-                    <h3>Remodelación Residencial</h3>
+                    <h3>Remodelación</h3>
                     <p>Transformamos tu hogar para que se adapte a tu estilo de vida y necesidades.</p>
-                    <ul>
-                        <li>Remodelación de cocinas y baños</li>
-                        <li>Ampliaciones y renovaciones</li>
-                        <li>Instalaciones y acabados</li>
-                        <li>Gestión de proyectos</li>
-                    </ul>
                 </div>
                 <div class="servicio-card">
-                    <h3>Diseño Comercial</h3>
-                    <p>Creamos espacios comerciales atractivos y funcionales que potencien tu marca.</p>
-                    <ul>
-                        <li>Diseño de oficinas y locales</li>
-                        <li>Imagen corporativa</li>
-                        <li>Diseño de escaparates</li>
-                        <li>Optimización de espacios</li>
-                    </ul>
+                    <h3>Asesorías</h3>
+                    <p>Te brindamos la asesoría necesaria para llevar a cabo tu proyecto.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" style="display: none;">
+    <section id="contacto">
         <div class="container">
             <h2>Contacto</h2>
             <div class="formulario-contacto">
@@ -511,7 +544,7 @@
         </div>
     </section>
 
-    <footer style="display: none;">
+    <footer>
         <div class="container">
             <p>© 2024 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
         </div>
@@ -529,16 +562,15 @@
             if (progress >= 100) {
                 clearInterval(interval);
                 loadingScreen.classList.add('hidden');
-                sections.forEach(section => section.style.display = '');
-                headerLogo.classList.add('small');
-
+                loadingScreen.addEventListener('transitionend', () => {
+                    // Mostrar las secciones después de que la pantalla de carga se oculte
+                    sections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                    headerLogo.classList.add('small');
+                }, { once: true }); // Asegurar que el evento solo se ejecute una vez
             }
         }, 20);
-
-        loadingScreen.addEventListener('transitionend', () => {
-             sections.forEach(section => section.style.display = '');
-             headerLogo.classList.add('small');
-        });
     </script>
 </body>
 </html>
