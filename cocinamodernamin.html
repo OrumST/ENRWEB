@@ -8,12 +8,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Define CSS Variables for colors based on the logo */
+        :root {
+            --primary-bg: #0d0d0d; /* Dark background */
+            --secondary-bg: #1a1a1a; /* Slightly lighter background for sections */
+            --text-light: #e0e0e0; /* Light text color */
+            --text-soft: #c0c0c0; /* Softer text color */
+            --accent-color: #DAA520; /* Goldenrod - A golden/brownish yellow from the logo */
+            --accent-hover: #B8860B; /* Darker Goldenrod for hover states */
+            --border-color: #2a2a2a; /* Subtle border color */
+            --shadow-dark: rgba(0, 0, 0, 0.3);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            --accent-shadow: rgba(218, 165, 32, 0.3); /* Shadow with accent color */
+            --accent-shadow-hover: rgba(218, 165, 32, 0.5); /* Stronger shadow with accent color on hover */
+        }
+
         /* Base styles for the body */
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #0d0d0d; /* Slightly darker background for depth */
-            color: #e0e0e0; /* Softer white for text */
+            background-color: var(--primary-bg);
+            color: var(--text-light);
             line-height: 1.6; /* Improved line height for readability */
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
@@ -44,7 +60,7 @@
         #header.scrolled {
             background-color: rgba(13, 13, 13, 0.95); /* Darker, slightly opaque when scrolled */
             padding: 10px 30px; /* Reduced padding when scrolled */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+            box-shadow: 0 2px 10px var(--shadow-dark); /* Subtle shadow */
         }
 
         /* Header logo styling */
@@ -89,7 +105,7 @@
         }
 
         #header nav ul li a {
-            color: #f0f0f0; /* Brighter white for links */
+            color: var(--text-light); /* Brighter white for links */
             text-decoration: none;
             font-weight: 500;
             font-size: 1.05em; /* Slightly adjusted font size */
@@ -105,7 +121,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: #00bfff; /* Accent color for underline */
+            background-color: var(--accent-color); /* Accent color for underline */
             transition: width 0.3s ease-out;
         }
 
@@ -114,7 +130,7 @@
         }
 
         #header nav ul li a:hover {
-            color: #00bfff; /* Accent color on hover */
+            color: var(--accent-color); /* Accent color on hover */
         }
 
         /* Main content area */
@@ -139,7 +155,7 @@
             color: #fff;
             text-align: center;
             font-weight: 700;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 5px var(--shadow-dark);
         }
 
         /* Image carousel styling */
@@ -147,9 +163,9 @@
             margin-bottom: 40px; /* More space below carousel */
             overflow: hidden;
             border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+            box-shadow: 0 10px 25px var(--shadow-strong); /* Stronger shadow */
             position: relative;
-            background-color: #1a1a1a; /* Background for carousel */
+            background-color: var(--secondary-bg); /* Background for carousel */
             padding: 10px; /* Inner padding */
             display: flex;
             align-items: center;
@@ -171,7 +187,7 @@
             object-position: center;
             border-radius: 8px; /* Rounded corners for images */
             margin: 0 5px; /* Small margin between images */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for individual images */
+            box-shadow: 0 4px 10px var(--shadow-dark); /* Shadow for individual images */
             transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
         }
 
@@ -186,7 +202,7 @@
             filter: blur(0);
             transform: scale(1);
             z-index: 2; /* Bring active image to front */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for active */
+            box-shadow: 0 8px 20px var(--shadow-strong); /* Stronger shadow for active */
         }
 
         .carousel-arrow {
@@ -226,10 +242,10 @@
         .details-section,
         .features-section,
         .cta-section { /* Added .cta-section here */
-            background-color: #1a1a1a; /* Consistent dark background */
+            background-color: var(--secondary-bg); /* Consistent dark background */
             padding: 40px; /* Increased padding */
             border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+            box-shadow: 0 8px 20px var(--shadow-medium); /* Enhanced shadow */
             margin-bottom: 40px; /* More space between sections */
             opacity: 0;
             animation: fadeIn 1s forwards; /* Fade in animation */
@@ -249,7 +265,7 @@
         .cta-section h2 { /* Added .cta-section here */
             font-size: 2.4em; /* Larger headings */
             margin-bottom: 25px;
-            color: #00bfff; /* Accent color */
+            color: var(--accent-color); /* Accent color */
             text-align: center;
             font-weight: 600;
             position: relative;
@@ -264,7 +280,7 @@
             position: absolute;
             width: 80px; /* Shorter underline */
             height: 3px;
-            background-color: #00bfff;
+            background-color: var(--accent-color);
             left: 50%;
             transform: translateX(-50%);
             bottom: 0;
@@ -275,7 +291,7 @@
         .cta-section p { /* Added .cta-section here */
             font-size: 1.15em; /* Slightly smaller text for better flow */
             margin-bottom: 20px;
-            color: #c0c0c0; /* Softer text color */
+            color: var(--text-soft); /* Softer text color */
             line-height: 1.7;
             text-align: justify; /* Justified text for cleaner look */
         }
@@ -284,7 +300,7 @@
             list-style: none; /* Remove default bullet points */
             padding-left: 0;
             font-size: 1.15em;
-            color: #c0c0c0;
+            color: var(--text-soft);
         }
 
         .features-section li {
@@ -296,7 +312,7 @@
         /* Custom bullet point for features */
         .features-section li::before {
             content: '•'; /* Custom bullet character */
-            color: #00bfff; /* Accent color for bullet */
+            color: var(--accent-color); /* Accent color for bullet */
             font-size: 1.5em;
             position: absolute;
             left: 0;
@@ -310,32 +326,32 @@
             width: fit-content; /* Fit content to button */
             margin: 40px auto 0 auto; /* Center horizontally and add margin */
             padding: 15px 35px; /* Larger padding */
-            background-color: #00bfff; /* Accent color */
+            background-color: var(--accent-color); /* Accent color */
             color: #fff;
             text-decoration: none;
             border-radius: 8px; /* More rounded */
             font-size: 1.25em; /* Larger font */
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3); /* Shadow with accent color */
+            box-shadow: 0 5px 15px var(--accent-shadow); /* Shadow with accent color */
             animation: none; /* Remove pulse animation for a cleaner look */
             text-align: center; /* Ensure text is centered within the button */
         }
 
         .action-button:hover {
-            background-color: #009acd; /* Darker accent on hover */
+            background-color: var(--accent-hover); /* Darker accent on hover */
             transform: translateY(-3px); /* Lift effect on hover */
-            box-shadow: 0 8px 20px rgba(0, 191, 255, 0.5); /* Stronger shadow on hover */
+            box-shadow: 0 8px 20px var(--accent-shadow-hover); /* Stronger shadow on hover */
         }
 
         /* Footer styling */
         footer {
-            background-color: #1a1a1a; /* Consistent dark background */
-            color: #b0b0b0; /* Softer white for footer text */
+            background-color: var(--secondary-bg); /* Consistent dark background */
+            color: var(--text-soft); /* Softer white for footer text */
             padding: 30px; /* Increased padding */
             text-align: center;
             margin-top: 50px; /* More space from content */
-            border-top: 1px solid #2a2a2a; /* Subtle border */
+            border-top: 1px solid var(--border-color); /* Subtle border */
             font-size: 0.95em;
         }
 
@@ -384,7 +400,7 @@
 
         .modal-close:hover,
         .modal-close:focus {
-            color: #00bfff; /* Accent color on hover */
+            color: var(--accent-color); /* Accent color on hover */
             transform: rotate(90deg); /* Rotate on hover */
             text-decoration: none;
         }
