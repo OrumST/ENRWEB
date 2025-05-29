@@ -224,7 +224,8 @@
 
         /* Section styling */
         .details-section,
-        .features-section {
+        .features-section,
+        .cta-section { /* Added .cta-section here */
             background-color: #1a1a1a; /* Consistent dark background */
             padding: 40px; /* Increased padding */
             border-radius: 12px; /* More rounded corners */
@@ -236,6 +237,7 @@
 
         .details-section { animation-delay: 0.8s; } /* Staggered animation */
         .features-section { animation-delay: 1.1s; }
+        .cta-section { animation-delay: 1.4s; } /* New section animation delay */
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -243,7 +245,8 @@
         }
 
         .details-section h2,
-        .features-section h2 {
+        .features-section h2,
+        .cta-section h2 { /* Added .cta-section here */
             font-size: 2.4em; /* Larger headings */
             margin-bottom: 25px;
             color: #00bfff; /* Accent color */
@@ -255,7 +258,8 @@
 
         /* Underline effect for section headings */
         .details-section h2::after,
-        .features-section h2::after {
+        .features-section h2::after,
+        .cta-section h2::after { /* Added .cta-section here */
             content: '';
             position: absolute;
             width: 80px; /* Shorter underline */
@@ -267,7 +271,8 @@
             border-radius: 2px;
         }
 
-        .details-section p {
+        .details-section p,
+        .cta-section p { /* Added .cta-section here */
             font-size: 1.15em; /* Slightly smaller text for better flow */
             margin-bottom: 20px;
             color: #c0c0c0; /* Softer text color */
@@ -299,8 +304,8 @@
             font-weight: bold;
         }
 
-        /* "Volver a Proyectos" link */
-        .link-Volver {
+        /* Reusable action button style */
+        .action-button {
             display: block; /* Block level for centering */
             width: fit-content; /* Fit content to button */
             margin: 40px auto 0 auto; /* Center horizontally and add margin */
@@ -314,9 +319,10 @@
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3); /* Shadow with accent color */
             animation: none; /* Remove pulse animation for a cleaner look */
+            text-align: center; /* Ensure text is centered within the button */
         }
 
-        .link-Volver:hover {
+        .action-button:hover {
             background-color: #009acd; /* Darker accent on hover */
             transform: translateY(-3px); /* Lift effect on hover */
             box-shadow: 0 8px 20px rgba(0, 191, 255, 0.5); /* Stronger shadow on hover */
@@ -346,7 +352,6 @@
             background-color: rgba(0,0,0,0.95); /* More opaque background */
             backdrop-filter: blur(5px); /* Subtle blur effect */
             -webkit-backdrop-filter: blur(5px); /* For Safari */
-            /* Removed display: flex; from here */
             align-items: center;
             justify-content: center;
         }
@@ -442,22 +447,25 @@
             }
 
             .details-section,
-            .features-section {
+            .features-section,
+            .cta-section { /* Added .cta-section here */
                 padding: 30px;
                 margin-bottom: 30px;
             }
 
             .details-section h2,
-            .features-section h2 {
+            .features-section h2,
+            .cta-section h2 { /* Added .cta-section here */
                 font-size: 2em;
             }
 
             .details-section p,
-            .features-section ul {
+            .features-section ul,
+            .cta-section p { /* Added .cta-section here */
                 font-size: 1.05em;
             }
 
-            .link-Volver {
+            .action-button { /* Changed from .link-Volver */
                 padding: 12px 25px;
                 font-size: 1.1em;
             }
@@ -504,21 +512,24 @@
             }
 
             .details-section,
-            .features-section {
+            .features-section,
+            .cta-section { /* Added .cta-section here */
                 padding: 20px;
             }
 
             .details-section h2,
-            .features-section h2 {
+            .features-section h2,
+            .cta-section h2 { /* Added .cta-section here */
                 font-size: 1.6em;
             }
 
             .details-section p,
-            .features-section ul {
+            .features-section ul,
+            .cta-section p { /* Added .cta-section here */
                 font-size: 1em;
             }
 
-            .link-Volver {
+            .action-button { /* Changed from .link-Volver */
                 padding: 10px 20px;
                 font-size: 1em;
             }
@@ -575,7 +586,14 @@
                 <li>Espacio amplio y funcional diseñado para la comodidad y la eficiencia</li>
             </ul>
         </section>
-        <a href="index.html" class="link-Volver">Volver a Proyectos</a>
+        <section class="cta-section">
+            <h2>Transforma tu Espacio: ¡Cotiza con Nosotros!</h2>
+            <p>
+                Estás a un paso de hacer realidad la cocina de tus sueños. Nuestro equipo de expertos está listo para ayudarte a diseñar un espacio que combine funcionalidad, estética y tu estilo personal. ¡Contáctanos hoy mismo para obtener una cotización sin compromiso!
+            </p>
+            <a href="#" class="action-button">Solicitar Cotización</a>
+        </section>
+        <a href="index.html" class="action-button">Volver a Proyectos</a>
     </main>
     <footer id="footer">
         <p>© 2025 ENR Remodelación y Diseño. Todos los derechos reservados.</p>
