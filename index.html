@@ -7,16 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Base styles for body and typography */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a; /* Fondo oscuro */
-            color: #f7fafc; /* Texto claro */
+            background-color: #1a1a1a; /* Dark background */
+            color: #f7fafc; /* Light text */
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
+
+        /* Header styles */
         header {
-            background-color: #2d2d2d; /* Fondo del header más oscuro */
+            background-color: #2d2d2d; /* Darker header background */
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -25,43 +28,67 @@
         }
         header .container {
             display: flex;
+            flex-direction: column; /* Stack on small screens */
             justify-content: space-between;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
+        @media (min-width: 768px) { /* Flex row on medium and larger screens */
+            header .container {
+                flex-direction: row;
+            }
+        }
         header h1 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #FACC15; /* Color de acento: Ámbar */
+            color: #FACC15; /* Accent color: Amber */
             transition: color 0.3s ease;
+            margin-bottom: 1rem; /* Space below title on small screens */
+        }
+        @media (min-width: 768px) {
+            header h1 {
+                margin-bottom: 0; /* Remove space on larger screens */
+            }
         }
         header h1:hover {
-            color: #EAB308; /* Color de acento al pasar el cursor: Ámbar más oscuro */
-        }
-        header nav {
+            color: #EAB308; /* Darker amber on hover */
         }
         header nav ul {
             list-style: none;
             display: flex;
+            flex-direction: column; /* Stack nav items on small screens */
             margin: 0;
             padding: 0;
-            justify-content: center;
             align-items: center;
         }
+        @media (min-width: 768px) { /* Row nav items on medium and larger screens */
+            header nav ul {
+                flex-direction: row;
+            }
+        }
         header nav ul li {
-            margin-left: 2rem;
+            margin-left: 0; /* Reset margin for small screens */
+            margin-top: 1rem; /* Space between nav items on small screens */
+        }
+        @media (min-width: 768px) {
+            header nav ul li {
+                margin-left: 2rem; /* Add margin for larger screens */
+                margin-top: 0; /* Reset margin on larger screens */
+            }
         }
         header nav ul li a {
-            color: #f7fafc; /* Color del texto de navegación */
+            color: #f7fafc; /* Nav link color */
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
         header nav ul li a:hover {
-            color: #cbd5e0; /* Color del texto de navegación al pasar el cursor */
+            color: #cbd5e0; /* Nav link hover color */
         }
+
+        /* Section general styles */
         section {
             padding: 3rem 0;
             text-align: center;
@@ -71,23 +98,42 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 0; /* Reduce padding on small screens */
+            }
+        }
+
+        /* Inicio section styles */
         #inicio h2 {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #FACC15; /* Color de acento: Ámbar */
+            color: #FACC15; /* Accent color: Amber */
             margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            #inicio h2 {
+                font-size: 2rem; /* Adjust font size for small screens */
+            }
         }
         #inicio p {
             font-size: 1rem;
-            color: #cbd5e0; /* Color del texto */
+            color: #cbd5e0; /* Text color */
             margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
+        @media (max-width: 768px) {
+            #inicio p {
+                font-size: 0.9rem; /* Adjust font size for small screens */
+            }
+        }
+
+        /* CTA Button styles */
         .cta-button {
-            background-color: #FACC15; /* Color del botón de CTA: Ámbar */
-            color: #1a1a1a; /* Texto oscuro para contraste */
+            background-color: #FACC15; /* CTA button color: Amber */
+            color: #1a1a1a; /* Dark text for contrast */
             padding: 1rem 2rem;
             border-radius: 0.5rem;
             text-decoration: none;
@@ -99,7 +145,7 @@
             animation: zoomInOut 1.5s ease-in-out infinite;
         }
         .cta-button:hover {
-            background-color: #EAB308; /* Color del botón de CTA al pasar el cursor: Ámbar más oscuro */
+            background-color: #EAB308; /* Darker amber on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
@@ -108,21 +154,37 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+
+        /* Section titles */
         #proyectos h2, #servicios h2, #contacto h2 {
             font-size: 2rem;
             font-weight: bold;
-            color: #FACC15; /* Color de acento: Ámbar */
+            color: #FACC15; /* Accent color: Amber */
             margin-bottom: 2rem;
             text-align: center;
         }
+        @media (max-width: 768px) {
+            #proyectos h2, #servicios h2, #contacto h2 {
+                font-size: 1.5rem; /* Adjust font size for small screens */
+            }
+        }
+
+        /* Projects grid */
         .proyectos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
+        @media (max-width: 768px) {
+            .proyectos-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+        }
+
+        /* Project card styles */
         .proyecto-card {
-            background-color: #2d2d2d; /* Fondo de la tarjeta de proyecto */
+            background-color: #2d2d2d; /* Project card background */
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             overflow: hidden;
@@ -141,7 +203,7 @@
         .proyecto-card .overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro para el overlay */
+            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay background */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -153,22 +215,29 @@
         }
         .proyecto-card .overlay h3 {
             font-size: 1.2rem;
-            color: #fff; /* Texto blanco para el overlay */
+            color: #fff; /* White text for overlay */
             text-align: center;
             text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .proyecto-card .overlay h3 {
+                font-size: 1rem; /* Adjust font size for small screens */
+            }
         }
         .proyecto-card .content {
             padding: 1rem;
         }
         .proyecto-card .content p {
-            color: #cbd5e0; /* Color del texto de descripción */
+            color: #cbd5e0; /* Description text color */
             font-size: 0.9rem;
         }
+
+        /* "Ver más proyectos" button */
         .ver-mas-proyectos {
             display: inline-block;
             background-color: transparent;
-            border: 2px solid #FACC15; /* Borde de acento: Ámbar */
-            color: #FACC15; /* Color de acento: Ámbar */
+            border: 2px solid #FACC15; /* Accent border: Amber */
+            color: #FACC15; /* Accent color: Amber */
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
@@ -178,18 +247,27 @@
             margin-top: 1rem;
         }
         .ver-mas-proyectos:hover {
-            background-color: #FACC15; /* Fondo de acento al pasar el cursor: Ámbar */
-            color: #1a1a1a; /* Texto oscuro para contraste */
+            background-color: #FACC15; /* Accent background on hover: Amber */
+            color: #1a1a1a; /* Dark text for contrast */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
+
+        /* Services grid */
         #servicios .servicios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
+        @media (max-width: 768px) {
+            #servicios .servicios-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+        }
+
+        /* Service card styles */
         .servicio-card {
-            background-color: #2d2d2d; /* Fondo de la tarjeta de servicio */
+            background-color: #2d2d2d; /* Service card background */
             border-radius: 0.5rem;
             padding: 1.5rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -202,34 +280,41 @@
         }
         .servicio-card h3 {
             font-size: 1.2rem;
-            color: #FACC15; /* Color de acento: Ámbar */
+            color: #FACC15; /* Accent color: Amber */
             margin-bottom: 1rem;
         }
         .servicio-card p {
-            color: #cbd5e0; /* Color del texto de descripción */
+            color: #cbd5e0; /* Description text color */
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
         .servicio-card ul {
             list-style: disc;
             padding-left: 1.5rem;
-            color: #cbd5e0; /* Color del texto de lista */
+            color: #cbd5e0; /* List text color */
             font-size: 0.9rem;
         }
         .servicio-card ul li {
             margin-bottom: 0.5rem;
         }
+
+        /* Contact form styles */
         #contacto .formulario-contacto {
-            background-color: #2d2d2d; /* Fondo del formulario de contacto */
+            background-color: #2d2d2d; /* Contact form background */
             border-radius: 0.5rem;
             padding: 2rem;
-            max-width: 100%;
+            max-width: 600px; /* Limit form width */
             margin: 0 auto;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        @media (max-width: 768px) {
+            #contacto .formulario-contacto {
+                padding: 1.5rem; /* Adjust padding for small screens */
+            }
+        }
         #contacto .formulario-contacto h2 {
             font-size: 1.5rem;
-            color: #FACC15; /* Color de acento: Ámbar */
+            color: #FACC15; /* Accent color: Amber */
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -239,7 +324,7 @@
         }
         #contacto .formulario-contacto label {
             margin-bottom: 0.5rem;
-            color: #cbd5e0; /* Color del texto de etiqueta */
+            color: #cbd5e0; /* Label text color */
             font-weight: 600;
             font-size: 0.9rem;
             display: block;
@@ -249,26 +334,26 @@
         #contacto .formulario-contacto textarea {
             padding: 0.75rem;
             border-radius: 0.5rem;
-            border: 1px solid #4a4a4a; /* Borde del input */
+            border: 1px solid #4a4a4a; /* Input border */
             margin-bottom: 1rem;
-            background-color: #3a3a3a; /* Fondo del input */
-            color: #f7fafc; /* Texto del input */
+            background-color: #3a3a3a; /* Input background */
+            color: #f7fafc; /* Input text color */
             font-size: 0.9rem;
             transition: all 0.3s ease;
             outline: none;
         }
         #contacto .formulario-contacto input:focus,
         #contacto .formulario-contacto textarea:focus {
-            border-color: #FACC15; /* Borde del input al enfocar: Ámbar */
-            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2); /* Sombra de acento */
+            border-color: #FACC15; /* Input border on focus: Amber */
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2); /* Accent shadow */
         }
         #contacto .formulario-contacto textarea {
             resize: vertical;
             min-height: 100px;
         }
         #contacto .formulario-contacto button {
-            background-color: #FACC15; /* Color del botón de formulario: Ámbar */
-            color: #1a1a1a; /* Texto oscuro para contraste */
+            background-color: #FACC15; /* Form button color: Amber */
+            color: #1a1a1a; /* Dark text for contrast */
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
@@ -282,18 +367,21 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         #contacto .formulario-contacto button:hover {
-            background-color: #EAB308; /* Color del botón de formulario al pasar el cursor: Ámbar más oscuro */
+            background-color: #EAB308; /* Darker amber on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
+
+        /* Footer styles */
         footer {
-            background-color: #2d2d2d; /* Fondo del footer */
-            color: #cbd5e0; /* Color del texto del footer */
+            background-color: #2d2d2d; /* Footer background */
+            color: #cbd5e0; /* Footer text color */
             padding: 1rem;
             text-align: center;
             margin-top: 3rem;
         }
-        /* Estilos para la pantalla de carga */
+
+        /* Loading screen styles */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -313,7 +401,7 @@
         .loading-screen.hidden {
             opacity: 0;
             pointer-events: none;
-            display: none;
+            display: none; /* Hide completely after transition */
         }
         .loading-logo {
             width: 150px;
@@ -336,10 +424,15 @@
             opacity: 0;
             animation: fadeIn 1s ease 0.5s forwards;
         }
+        @media (max-width: 768px) {
+            .loading-text {
+                font-size: 1rem; /* Adjust font size for small screens */
+            }
+        }
         .progress-bar {
             width: 80%;
             height: 0.75rem;
-            background-color: #4a4a4a; /* Fondo de la barra de progreso */
+            background-color: #4a4a4a; /* Progress bar background */
             border-radius: 0.5rem;
             position: relative;
             overflow: hidden;
@@ -349,83 +442,17 @@
             top: 0;
             left: 0;
             height: 100%;
-            background-color: #FACC15; /* Color de relleno de la barra de progreso: Ámbar */
+            background-color: #FACC15; /* Progress bar fill color: Amber */
             border-radius: 0.5rem;
             width: 0;
             transition: width 0.5s ease;
         }
-        /* Estilos para el logo y el scroll inicial */
-        .logo {
+
+        /* Logo in header */
+        .logo img {
             transition: transform 0.5s ease;
             height: auto;
-            max-width: 80px;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-            justify-content: center;
-            align-items: center;
-        }
-        header nav ul li {
-            margin-left: 2rem;
-        }
-        header nav ul li a {
-            color: #f7fafc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        /* Estilos para pantallas pequeñas */
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            header nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            header nav ul li {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
-            section {
-                padding: 2rem 0;
-            }
-            #inicio h2 {
-                font-size: 2rem;
-            }
-            #inicio p {
-                font-size: 0.9rem;
-            }
-            .proyectos-grid, .servicios-grid {
-                grid-template-columns: 1fr;
-            }
-            .proyecto-card .overlay h3 {
-                font-size: 1rem;
-            }
-            .formulario-contacto {
-                padding: 1.5rem;
-            }
-            #contacto h2 {
-                font-size: 1.5rem;
-            }
-            .loading-text {
-                font-size: 1rem;
-            }
+            max-width: 80px; /* Max width for the logo */
         }
     </style>
 </head>
@@ -440,18 +467,15 @@
 
     <header>
         <div class="container">
-            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                <h1 class="logo small">
-                    <img src="http://imgfz.com/i/XSaJOZv.png" alt="ENR Remodelación y Diseño Logo" >
-                </h1>
+            <div class="flex items-center mb-4 md:mb-0"> <h1 class="logo">
+                    <img src="http://imgfz.com/i/XSaJOZv.png" alt="ENR Remodelación y Diseño Logo" class="w-20 md:w-auto"> </h1>
                 <h1>ENR Remodelación y Diseño</h1>
             </div>
             <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                <ul class="flex flex-col md:flex-row items-center"> <li class="mt-4 md:mt-0 md:ml-8"><a href="#inicio">Inicio</a></li>
+                    <li class="mt-4 md:mt-0 md:ml-8"><a href="#proyectos">Proyectos</a></li>
+                    <li class="mt-4 md:mt-0 md:ml-8"><a href="#servicios">Servicios</a></li>
+                    <li class="mt-4 md:mt-0 md:ml-8"><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -459,15 +483,15 @@
 
     <section id="inicio">
         <div class="container">
-            <h2>Bienvenido a ENR Remodelación y Diseño</h2>
-            <p>Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-amber-400 mb-4">Bienvenido a ENR Remodelación y Diseño</h2>
+            <p class="text-base md:text-lg text-slate-300 mb-8 max-w-2xl mx-auto">Somos una empresa dedicada a crear espacios únicos y funcionales a través de nuestros servicios de remodelación y diseño.</p>
             <a href="#contacto" class="cta-button">Cotiza con nosotros</a>
         </div>
     </section>
 
     <section id="proyectos">
         <div class="container">
-            <h2>Nuestros Proyectos</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-400 mb-8">Nuestros Proyectos</h2>
             <div class="proyectos-grid">
                 <div class="proyecto-card">
                     <img src="https://github.com/OrumST/ENRWEB/blob/images/cocina-enr.jpeg?raw=true" alt="Cocina Moderna Minimalista">
@@ -509,7 +533,7 @@
 
     <section id="servicios">
         <div class="container">
-            <h2>Nuestros Servicios</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-400 mb-8">Nuestros Servicios</h2>
             <div class="servicios-grid">
                 <div class="servicio-card">
                     <h3>Diseño de Interiores</h3>
@@ -529,7 +553,7 @@
 
     <section id="contacto">
         <div class="container">
-            <h2>Contacto</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-400 mb-8">Contacto</h2>
             <div class="formulario-contacto">
                 <form>
                     <label for="nombre">Nombre:</label>
@@ -553,7 +577,7 @@
         const loadingScreen = document.querySelector('.loading-screen');
         const progressBarFill = document.querySelector('.progress-bar-fill');
         const sections = document.querySelectorAll('section, header, footer');
-        const headerLogo = document.querySelector('.logo');
+        const headerLogo = document.querySelector('.logo img'); // Select the image inside the logo div
 
         let progress = 0;
         const interval = setInterval(() => {
@@ -563,12 +587,13 @@
                 clearInterval(interval);
                 loadingScreen.classList.add('hidden');
                 loadingScreen.addEventListener('transitionend', () => {
-                    // Mostrar las secciones después de que la pantalla de carga se oculte
+                    // Hide the loading screen completely after the fade out
+                    loadingScreen.style.display = 'none';
+                    // Show the sections after the loading screen is hidden
                     sections.forEach(section => {
                         section.style.display = 'block';
                     });
-                    headerLogo.classList.add('small');
-                }, { once: true }); // Asegurar que el evento solo se ejecute una vez
+                }, { once: true });
             }
         }, 20);
     </script>
